@@ -1,10 +1,11 @@
 const mibunshou = require('./env_config');
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const fs = require('fs');
 
 // General launch seq.
 const OpReadyTime = new Date();
-let formatted_date = OpReadyTime.getFullYear() + "-" + (OpReadyTime.getMonth() + 1) + "-" + OpReadyTime.getDate() + " " + OpReadyTime.getHours() + ":" + OpReadyTime.getMinutes() + ":" + OpReadyTime.getSeconds()
+let formatted_date = OpReadyTime.getFullYear() + "-" + (OpReadyTime.getMonth() + 1) + "-" + OpReadyTime.getDate() + "_" + OpReadyTime.getHours() + ":" + OpReadyTime.getMinutes();
 const operationlog = `./log/${formatted_date}_operationlog.txt`;
 fs.writeFile(operationlog, `Log file created @ ${OpReadyTime}`, function (err) {
       if (err) throw err;
