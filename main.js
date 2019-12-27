@@ -2,6 +2,7 @@ const mibunshou = require('./env_config');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
+const hash = require('object-hash');
 
 // General launch seq.
 const OpReadyTime = new Date();
@@ -24,7 +25,10 @@ client.once('disconnect', () => {
 // Main
 client.on('message', msg => {
   if (msg.content.startsWith("!5ch") === true) {
-    let postcontent = msg.content.substring(5);
+    const hashid = hash.MD5(msg.member.id);
+    var d = new Date(msg.createdTimestamp);
+    msgCreatedTime = d.getDate() + '/' + (d.getMonth()) + '/' + d.getFullYear() + " " + d.getHours() + ':' + d.getMinutes();
+    const postcontent = `**以下、名無しにかわりましてVIPがお送りします Date: ${msgCreatedTime} (GTM+9) ID:${hashid.substr(hashid.length - 6, hashid.length)}** \n ${msg.content.substring(5)}`;
     client.channels.get(mibunshou.kb13_channelid).send(postcontent);
   }
 });
