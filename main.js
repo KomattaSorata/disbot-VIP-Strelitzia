@@ -21,5 +21,13 @@ client.once('disconnect', () => {
   console.log('Disconnect!');
 });
 
+// Main
+client.on('message', msg => {
+  if (msg.content.startsWith("!5ch") === true) {
+    let postcontent = msg.content.substring(5);
+    client.channels.get(mibunshou.kb13_channelid).send(postcontent);
+  }
+});
+
 // Login
 client.login(mibunshou.discord_token);
