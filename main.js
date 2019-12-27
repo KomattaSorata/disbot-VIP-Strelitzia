@@ -25,11 +25,17 @@ client.once('disconnect', () => {
 // Main
 client.on('message', msg => {
   if (msg.content.startsWith("!5ch") === true) {
-    const hashid = hash.MD5(msg.member.id);
-    var d = new Date(msg.createdTimestamp);
-    msgCreatedTime = d.getDate() + '/' + (d.getMonth()) + '/' + d.getFullYear() + " " + d.getHours() + ':' + d.getMinutes();
-    const postcontent = `**以下、名無しにかわりましてVIPがお送りします Date: ${msgCreatedTime} (GTM+9) ID:${hashid.substr(hashid.length - 6, hashid.length)}** \n ${msg.content.substring(5)}`;
-    client.channels.get(mibunshou.kb13_channelid).send(postcontent);
+    const guild = client.guilds.get(mibunshou.kb13_serverid);
+    if (guild.member(msg.author.id)) {
+      const hashid = hash.MD5(msg.author.id);
+      var d = new Date(msg.createdTimestamp);
+      msgCreatedTime = d.getDate() + '/' + (d.getMonth()) + '/' + d.getFullYear() + " " + d.getHours() + ':' + d.getMinutes();
+      const postcontent = `**以下、名無しにかわりましてVIPがお送りします Date: ${msgCreatedTime} (GTM+9) ID:${hashid.substr(hashid.length - 6, hashid.length)}** \n ${msg.content.substring(5)}`;
+      client.channels.get(mibunshou.kb13_channelid).send(postcontent);
+      msg.reply(`発送しました！ \n Your message is posted.`);
+    }else{
+      msg.reply(`発送できません！あなたは目標サーバーのメンバーではありません。\n Failed to post message. You are not a member of the targetted server.`);
+    }
   }
 });
 
