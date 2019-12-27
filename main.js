@@ -38,7 +38,8 @@ client.on('message', msg => {
         msg.reply(`発送できません！あなたは目標サーバーのメンバーではありません。\n Failed to post message. You are not a member of the targetted server.`);
       }
     } else {
-      msg.reply(`#5chにポストしたいの場合は私にDMしてください！ \n Please DM me is you would like to post on #5ch.`)
+      msg.delete();
+      msg.reply(`#5chにポストしたいの場合は私にDMしてください！ \n Please DM me is you would like to post on #5ch.`).then(msg => {msg.delete(10000)}).catch(console.error());
     }
   }
 });
