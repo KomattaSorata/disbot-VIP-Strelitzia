@@ -12,6 +12,7 @@ This project however, is in a simliar approach but is to build the same thing fo
 
 - [Discord.js](https://discord.js.org/)
 - [Object-hash](https://github.com/puleos/object-hash)
+- [PouchDB](https://pouchdb.com/)
 
 ## License
 
