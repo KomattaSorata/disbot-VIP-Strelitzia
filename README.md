@@ -9,6 +9,8 @@ Idea originated from [this post](https://qiita.com/peisuke/items/80984db8b47cd82
 This project however, is in a simliar approach but is to build the same thing for Discord. And it is purely for fun.
 
 ## To-dos
+(The upcoming versions will have "thread limitation", where number of replies are limited and a reset will be performed when the limit is reached. This is for monitoring the impact minor changes made, both on performances and how users use the board.)
+- Allowing direct upload of images, including GIF support.
 - Adding MongoDB for action log and content saving.
 - Allowing the regeneration of postingid (will replace current hash method, new hash method will not be publicly committed)
 - Basic admin feature from DMing the bot will be added.
