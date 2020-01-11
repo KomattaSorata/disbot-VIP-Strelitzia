@@ -8,6 +8,11 @@ Idea originated from [this post](https://qiita.com/peisuke/items/80984db8b47cd82
 
 This project however, is in a simliar approach but is to build the same thing for Discord. And it is purely for fun.
 
+## To-dos
+- Adding MongoDB for action log and content saving.
+- Allowing the regeneration of postingid (will replace current hash method, new hash method will not be publicly committed)
+- Basic admin feature from DMing the bot will be added.
+
 ## Packages Used
 
 - [Discord.js](https://discord.js.org/)
