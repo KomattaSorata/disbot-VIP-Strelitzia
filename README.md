@@ -1,6 +1,7 @@
 # Disbot-VIP-Strelitzia
 
 This README is still working in process and will be updated along the development proceeds.
+** Minor progress is on another private repo.
 
 ## Introduction
 
