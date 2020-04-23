@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/KomattaSorata/disbot-VIP-Strelitzia#readme",
   "dependencies": {
+    "@discordjs/uws": "^10.149.0",
     "discord.js": "^11.5.1",
-    "object-hash": "^2.0.1"
+    "dotenv": "^8.2.0"
   }
 }
