@@ -1,8 +1,19 @@
-require("dotenv").config();
+const dotenv = require("dotenv");
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const Enmap = require("enmap");
 const fs = require("fs");
+const db = require("mongoose");
+
+dotenv.config();
+
+db.connect(
+  process.env.DB_ACCESS_URL,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("Database connected.");
+  }
+);
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
