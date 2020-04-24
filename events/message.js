@@ -1,5 +1,7 @@
 const sysmsg = require("../core/sysmsg");
-module.exports = (client, message) => {
+const User = require("../models/User");
+
+module.exports = async (client, message) => {
   if (message.author.bot) return;
   if (message.content.indexOf(process.env.BOT_COMMAND_PREFIX) !== 0) return;
 
@@ -12,6 +14,22 @@ module.exports = (client, message) => {
       })
       .catch(console.error());
     return;
+  }
+
+  const ifUserRegistered = await User.findOne({
+    discord_id: message.author.id,
+  });
+  if (
+    message.content.startsWith(`${process.env.BOT_COMMAND_PREFIX} init`) ===
+      false &&
+    !ifUserRegistered
+  ) {
+    message.channel.send({
+      embed: {
+        color: sysmsg.color.error,
+        description: sysmsg.error_message.not_initialized,
+      },
+    });
   }
 
   const args = message.content

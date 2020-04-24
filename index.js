@@ -3,11 +3,11 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const Enmap = require("enmap");
 const fs = require("fs");
-const db = require("mongoose");
+const mongoose = require("mongoose");
 
 dotenv.config();
 
-db.connect(
+mongoose.connect(
   process.env.DB_ACCESS_URL,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
