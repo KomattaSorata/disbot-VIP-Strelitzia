@@ -14,12 +14,14 @@ module.exports = {
       "利用登録はもう既に完了しています。\n登録情報の指定や編集はできません。また、ハッシュIDの再発行はできません。（再発行の機能は実装予定です。）\nほかの実行できるコマンドについては `>sch help` から確認してください。",
     database_connection_error:
       "データベースへ接続できませんでした。時間が経ってからやり直してください。",
+    post_message_empty:
+      "投稿内容が必要です。 ```>sch post [メッセージ内容] ```で送信してください。",
   },
 
   success_messsage: {
     initialized:
       "確認ありがとうございます。登録が完了しました。\n`>sch help` でコマンド一覧を確認してください。\nまた、投稿する際は先ほど確認したガイドラインをしたがってください。",
-    posted: "メッセージが登録されました。",
+    posted: "メッセージが投稿されました。",
   },
 
   warning_message: {
@@ -36,5 +38,9 @@ module.exports = {
       "https://github.com/KomattaSorata/disbot-VIP-Strelitzia_S2/tree/master/public/User_Initializing_README.md",
     maintenanceAfterThreadReachLimit:
       "当スレットがリミットコメント数に足した後、新たのスレットが有効になる前にメインテナンスに入ります。メインテナンスが終わるまで、スレットの更新や投稿ができません。",
+  },
+  help_message: {
+    main:
+      "運営さんが怠惰だから何もヘルプ書いていない。```>sch post [メッセージ内容]```で何とか投稿してみたら？",
   },
 };
