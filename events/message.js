@@ -3,7 +3,6 @@ const User = require("../models/User");
 
 module.exports = async (client, message) => {
   if (message.author.bot) return;
-  if (message.content.indexOf(process.env.BOT_COMMAND_PREFIX) !== 0) return;
 
   if (message.channel.type === "text") {
     message.delete();
@@ -15,7 +14,14 @@ module.exports = async (client, message) => {
       .catch(console.error());
     return;
   }
-
+  if (message.content.indexOf(process.env.BOT_COMMAND_PREFIX) !== 0) {
+    message.channel.send({
+      embed: {
+        color: sysmsg.color.error,
+        description: sysmsg.error_message.prefix_incorrect,
+      },
+    });
+  }
   const args = message.content
     .slice(process.env.BOT_COMMAND_PREFIX.length)
     .trim()

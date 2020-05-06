@@ -15,7 +15,9 @@ module.exports = {
     database_connection_error:
       "データベースへ接続できませんでした。時間が経ってからやり直してください。",
     post_message_empty:
-      "投稿内容が必要です。 ```>sch post [メッセージ内容] ```で送信してください。",
+      "投稿内容が必要です。 `>sch post [メッセージ内容] `で送信してください。",
+    prefix_incorrect:
+      "投稿する場合は`>sch post [メッセージ内容] `で送信してください。（初回利用の前に先に `>sch init` を実行して、説明事項を確認してください。）",
   },
 
   success_messsage: {
