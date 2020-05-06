@@ -16,22 +16,6 @@ module.exports = async (client, message) => {
     return;
   }
 
-  const ifUserRegistered = await User.findOne({
-    discord_id: message.author.id,
-  });
-  if (
-    message.content.startsWith(`${process.env.BOT_COMMAND_PREFIX} init`) ===
-      false &&
-    !ifUserRegistered
-  ) {
-    message.channel.send({
-      embed: {
-        color: sysmsg.color.error,
-        description: sysmsg.error_message.not_initialized,
-      },
-    });
-  }
-
   const args = message.content
     .slice(process.env.BOT_COMMAND_PREFIX.length)
     .trim()
