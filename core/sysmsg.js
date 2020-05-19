@@ -24,6 +24,7 @@ module.exports = {
     initialized:
       "確認ありがとうございます。登録が完了しました。\n`>sch help` でコマンド一覧を確認してください。\nまた、投稿する際は先ほど確認したガイドラインをしたがってください。",
     posted: "メッセージが投稿されました。",
+    HashedIDRegenCompleted: "HashIDを再発行しました。",
   },
 
   warning_message: {
