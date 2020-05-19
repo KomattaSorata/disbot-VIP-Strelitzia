@@ -3,6 +3,7 @@ const User = require("../models/User");
 
 module.exports = async (client, message) => {
   if (message.author.bot) return;
+  if (message.channel.id !== process.env.TARGET_CHANNEL) return;
 
   if (message.channel.type === "text") {
     message.delete();
