@@ -5,14 +5,16 @@ module.exports = async (client, message) => {
   if (message.author.bot) return;
 
   if (message.channel.type === "text") {
-    message.delete();
-    message
-      .reply(sysmsg.error_message.sendInDM)
-      .then((message) => {
-        message.delete(10000);
-      })
-      .catch(console.error());
-    return;
+    if (message.channel.id !== process.env.TARGET_CHANNEL) {
+      message.delete();
+      message
+        .reply(sysmsg.error_message.sendInDM)
+        .then((message) => {
+          message.delete(10000);
+        })
+        .catch(console.error());
+      return;
+    }
   }
   if (message.content.indexOf(process.env.BOT_COMMAND_PREFIX) !== 0) {
     message.channel.send({
@@ -22,7 +24,9 @@ module.exports = async (client, message) => {
       },
     });
   }
+
   const args = message.content
+    .replace(/　/g, " ")
     .slice(process.env.BOT_COMMAND_PREFIX.length)
     .trim()
     .split(/ +/g);
