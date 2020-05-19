@@ -22,7 +22,9 @@ module.exports = async (client, message) => {
       },
     });
   }
+
   const args = message.content
+    .replace(/　/g, " ")
     .slice(process.env.BOT_COMMAND_PREFIX.length)
     .trim()
     .split(/ +/g);
