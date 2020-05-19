@@ -28,6 +28,10 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+
+  last_id_regen: {
+    type: Date,
+  },
 });
 
 module.exports = mongoose.model("user", UserSchema);

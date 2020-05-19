@@ -18,13 +18,16 @@ module.exports = {
       "投稿内容が必要です。 `>sch post [メッセージ内容] `で送信してください。",
     prefix_incorrect:
       "投稿する場合は`>sch post [メッセージ内容] `で送信してください。（初回利用の前に先に `>sch init` を実行して、説明事項を確認してください。）",
+    regenHashedID_cooldown:
+      "前回の発行から一週間以内は再発行できません。一週間以降になってから再び試してください。",
   },
 
   success_messsage: {
     initialized:
       "確認ありがとうございます。登録が完了しました。\n`>sch help` でコマンド一覧を確認してください。\nまた、投稿する際は先ほど確認したガイドラインをしたがってください。",
     posted: "メッセージが投稿されました。",
-    HashedIDRegenCompleted: "HashIDを再発行しました。",
+    HashedIDRegenCompleted:
+      "HashIDを再発行しました。※一週間以内再び再発行することはできません。",
   },
 
   warning_message: {

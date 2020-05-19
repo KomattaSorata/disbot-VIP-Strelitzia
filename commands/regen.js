@@ -14,25 +14,44 @@ exports.run = async (client, message, args) => {
       },
     });
   } else {
-    const bcrypt_salt = await bcrypt.genSalt(12);
-    const bcrypt_newIssuedHashedID = await bcrypt.hash(
-      message.author.id,
-      bcrypt_salt
-    );
+    const compareTimestamp = ifUserInitilized.last_id_regen + 604800000;
 
-    const hitOriginal = { discord_id: message.author.id };
-    const pushUpdateInfo = { hashed_id: bcrypt_newIssuedHashedID };
+    if (
+      compareTimestamp >= Date.now ||
+      ifUserInitilized.last_id_regen === undefined
+    ) {
+      const bcrypt_salt = await bcrypt.genSalt(12);
+      const bcrypt_newIssuedHashedID = await bcrypt.hash(
+        message.author.id,
+        bcrypt_salt
+      );
 
-    const update = await User.findOneAndUpdate(hitOriginal, pushUpdateInfo, {
-      returnOriginal: false,
-      useFindAndModify: false,
-    });
+      const hitOriginal = { discord_id: message.author.id };
+      const regenUpdateTime = Date.now();
+      const pushUpdateInfo = {
+        hashed_id: bcrypt_newIssuedHashedID,
+        last_id_regen: regenUpdateTime,
+        $inc: { id_regen_count: 1 },
+      };
 
-    message.channel.send({
-      embed: {
-        color: sysmsg.color.success,
-        description: sysmsg.success_messsage.HashedIDRegenCompleted,
-      },
-    });
+      const update = await User.findOneAndUpdate(hitOriginal, pushUpdateInfo, {
+        returnOriginal: false,
+        useFindAndModify: false,
+      });
+
+      message.channel.send({
+        embed: {
+          color: sysmsg.color.success,
+          description: sysmsg.success_messsage.HashedIDRegenCompleted,
+        },
+      });
+    } else {
+      message.channel.send({
+        embed: {
+          color: sysmsg.color.error,
+          description: sysmsg.error_message.regenHashedID_cooldown,
+        },
+      });
+    }
   }
 };
