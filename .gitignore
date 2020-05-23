@@ -108,3 +108,4 @@ dist
 
 # I DONT CARE WTF THIS IS 
 .DS_Store
+/commands/kami.js
